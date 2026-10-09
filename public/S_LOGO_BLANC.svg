@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
+  <defs>
+    <!-- Fine Dissolve / Stipple Edge Filter matching S_LOGO_BLANC.png -->
+    <filter id="stipple-edge" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <!-- Create soft glow for the dissolve zone -->
+      <feGaussianBlur in="SourceAlpha" stdDeviation="7" result="blurEdge" />
+      <!-- High-frequency pointillism noise -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="12" result="noise" />
+      <!-- Combine blur alpha with noise to produce stipple dots along edges -->
+      <feComposite in="blurEdge" in2="noise" operator="in" result="noisyEdge" />
+      <feComponentTransfer in="noisyEdge" result="stippleAlpha">
+        <feFuncA type="linear" slope="2.4" intercept="-0.35" />
+      </feComponentTransfer>
+      <feFlood flood-color="#F3ECE7" flood-opacity="0.75" result="stippleColor" />
+      <feComposite in="stippleColor" in2="stippleAlpha" operator="in" result="stippleLayer" />
+      <!-- Merge stipple edge with crisp white core -->
+      <feMerge>
+        <feMergeNode in="stippleLayer" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Mask for the S inner counters and pinched creases -->
+    <mask id="s-shape-mask">
+      <rect width="1000" height="1000" fill="black" />
+      <!-- Outer body of the bold rounded S -->
+      <path
+        d="M 495 246
+           C 625 246, 742 292, 742 356
+           C 742 396, 704 412, 652 422
+           C 638 425, 636 440, 652 448
+           C 718 478, 756 528, 756 596
+           C 756 696, 646 756, 502 756
+           C 362 756, 260 704, 260 628
+           C 260 586, 294 574, 336 562
+           C 350 558, 352 542, 336 534
+           C 282 504, 258 458, 258 402
+           C 258 304, 365 246, 495 246 Z"
+        fill="white"
+      />
+      <!-- Upper inner counter (tilted rounded capsule hole) -->
+      <path
+        d="M 412 392
+           C 412 362, 442 356, 488 362
+           C 548 370, 616 392, 636 428
+           C 642 438, 630 446, 604 442
+           C 548 434, 476 426, 436 422
+           C 418 420, 412 408, 412 392 Z"
+        fill="black"
+      />
+      <!-- Lower inner counter (tilted rounded capsule hole) -->
+      <path
+        d="M 364 554
+           C 368 544, 384 544, 412 550
+           C 472 562, 546 574, 584 582
+           C 604 586, 610 600, 608 614
+           C 606 634, 586 644, 552 640
+           C 484 632, 402 612, 372 574
+           C 364 564, 362 558, 364 554 Z"
+        fill="black"
+      />
+    </mask>
+  </defs>
+
+  <g filter="url(#stipple-edge)">
+    <!-- Outer Circular Ring -->
+    <circle
+      cx="500"
+      cy="500"
+      r="410"
+      fill="none"
+      stroke="#FFFFFF"
+      stroke-width="64"
+    />
+
+    <!-- Bold Rounded S in Center -->
+    <rect
+      x="0"
+      y="0"
+      width="1000"
+      height="1000"
+      fill="#FFFFFF"
+      mask="url(#s-shape-mask)"
+    />
+  </g>
+</svg>

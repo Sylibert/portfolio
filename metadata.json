@@ -1,0 +1,6 @@
+{
+  "name": "Sylvain Libert | Portfolio & Studio d'Analyse IA",
+  "description": "Portfolio de Sylvain Libert, vidéaste et réalisateur (Corporate, Pub, Mode) avec studio d'analyse, générateur de propositions et transcription vocale IA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
