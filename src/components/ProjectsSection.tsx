@@ -6,7 +6,7 @@ interface ProjectsSectionProps {
 }
 
 export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProject }) => {
-  const [filter, setFilter] = useState<'all' | 'corporate' | 'pub' | 'mode'>('all');
+  const [filter, setFilter] = useState<'all' | 'corporate' | 'pub' | 'mode'>('corporate');
 
   const filteredProjects = PROJECTS.filter((p) => {
     if (filter === 'all') return true;
@@ -14,23 +14,23 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
   });
 
   return (
-    <section className="py-24 px-4 max-w-7xl mx-auto" id="projects">
+    <section className="py-16 sm:py-24 px-4 max-w-7xl mx-auto" id="projects">
       {/* Header & Filter Controls */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-        <div>
-          <span className="text-[#F3ECE7]/60 text-xs uppercase tracking-widest font-bold">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-5 sm:gap-6">
+        <div className="text-center md:text-left">
+          <span className="text-[#F3ECE7]/60 text-[11px] sm:text-xs uppercase tracking-widest font-bold">
             Réalisations Récentes
           </span>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-[#F3ECE7] mt-2 lowercase">
+          <h2 className="font-display text-2xl sm:text-5xl font-bold text-[#F3ECE7] mt-2 lowercase">
             projets à la une
           </h2>
         </div>
 
         {/* Filter Buttons with Refined Glass */}
-        <div className="flex flex-wrap gap-2 liquid-glass-pill p-1.5 rounded-2xl self-start md:self-auto shadow-lg">
+        <div className="w-full sm:w-auto grid grid-cols-2 sm:flex sm:flex-wrap gap-1.5 sm:gap-2 liquid-glass-pill p-1.5 rounded-2xl self-center md:self-auto shadow-lg">
           <button
             onClick={() => setFilter('all')}
-            className={`font-bold text-xs px-4 py-2 rounded-xl transition-all cursor-pointer ${
+            className={`font-bold text-[11px] sm:text-xs px-3 sm:px-4 py-2 rounded-xl transition-all cursor-pointer text-center ${
               filter === 'all'
                 ? 'liquid-glass-button text-[#130602] shadow-md font-extrabold'
                 : 'text-[#F3ECE7]/75 hover:text-white'
@@ -41,7 +41,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
 
           <button
             onClick={() => setFilter('corporate')}
-            className={`font-bold text-xs px-4 py-2 rounded-xl transition-all cursor-pointer ${
+            className={`font-bold text-[11px] sm:text-xs px-3 sm:px-4 py-2 rounded-xl transition-all cursor-pointer text-center ${
               filter === 'corporate'
                 ? 'liquid-glass-button text-[#130602] shadow-md font-extrabold'
                 : 'text-[#F3ECE7]/75 hover:text-white'
@@ -52,7 +52,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
 
           <button
             onClick={() => setFilter('pub')}
-            className={`font-bold text-xs px-4 py-2 rounded-xl transition-all cursor-pointer ${
+            className={`font-bold text-[11px] sm:text-xs px-3 sm:px-4 py-2 rounded-xl transition-all cursor-pointer text-center ${
               filter === 'pub'
                 ? 'liquid-glass-button text-[#130602] shadow-md font-extrabold'
                 : 'text-[#F3ECE7]/75 hover:text-white'
@@ -63,7 +63,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
 
           <button
             onClick={() => setFilter('mode')}
-            className={`font-bold text-xs px-4 py-2 rounded-xl transition-all cursor-pointer ${
+            className={`font-bold text-[11px] sm:text-xs px-3 sm:px-4 py-2 rounded-xl transition-all cursor-pointer text-center ${
               filter === 'mode'
                 ? 'liquid-glass-button text-[#130602] shadow-md font-extrabold'
                 : 'text-[#F3ECE7]/75 hover:text-white'
@@ -76,21 +76,22 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
 
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-        {filteredProjects.map((project) => (
+        {filteredProjects.map((project, index) => (
           <article
-            key={project.id}
+            key={`${filter}-${project.id}`}
             onClick={() => onSelectProject(project)}
-            className="group cursor-pointer flex flex-col transition-all duration-300 hover:-translate-y-1"
+            style={{ animationDelay: `${index * 80}ms` }}
+            className="group cursor-pointer flex flex-col transition-all duration-300 hover:-translate-y-1 animate-project-card"
           >
             {/* Header info */}
-            <div className="flex flex-wrap items-center justify-center gap-2.5 mb-3.5">
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-3 sm:mb-3.5 px-1">
               {/* Perfectly centered category theme pill */}
-              <div className="h-6 px-3.5 inline-flex items-center justify-center rounded-full liquid-glass-pill shadow-sm">
-                <span className="text-[10px] uppercase tracking-widest font-extrabold text-[#F3ECE7] translate-y-[2.5px] leading-none inline-block">
+              <div className="h-6 px-3 sm:px-3.5 inline-flex items-center justify-center rounded-full liquid-glass-pill shadow-sm">
+                <span className="text-[9px] sm:text-[10px] uppercase tracking-widest font-extrabold text-[#F3ECE7] translate-y-[2.5px] leading-none inline-block">
                   {project.categoryLabel}
                 </span>
               </div>
-              <span className="font-display text-lg text-[#F3ECE7] tracking-wide group-hover:text-white transition-colors">
+              <span className="font-display text-sm sm:text-lg text-[#F3ECE7] tracking-wide group-hover:text-white transition-colors text-center">
                 {project.client}
               </span>
             </div>

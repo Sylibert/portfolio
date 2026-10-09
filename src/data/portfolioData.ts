@@ -24,7 +24,7 @@ export const PROJECTS: Project[] = [
     category: "corporate",
     categoryLabel: "Corporate & Finance",
     thumbnail: "https://img.youtube.com/vi/pb4Kzj5as6k/maxresdefault.jpg",
-    summary: "Série d'interviews et capsules institutionnelles décryptant l'investissement en Private Equity avec une esthétique premium et rassurante.",
+    summary: "Présentation d'Opale Capital par son président, Paul Moreno Bosseville, suivie de la présentation d'Antoine et Louise ainsi que de leurs fonctions au sein d'Opale Capital.",
     deliverables: ["3x Vidéos format 16:9 (4K)"],
     videos: [
       { title: "Présentation de Opale", url: "https://www.youtube.com/watch?v=pb4Kzj5as6k", youtubeId: "pb4Kzj5as6k" },
@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
     category: "corporate",
     categoryLabel: "Corporate & Finance",
     thumbnail: "https://img.youtube.com/vi/_Lej58E-tAc/maxresdefault.jpg",
-    summary: "Mise en avant des experts Homunity pour humaniser la plateforme de financement participatif immobilier et rassurer les investisseurs.",
+    summary: "Présentation d'Homunity par son président, Quentin Romet, suivie de la présentation de Lucie et de sa fonction au sein d'Homunity.",
     deliverables: ["2x Vidéos format 16:9 (4K)"],
     videos: [
       { title: "Présentation de Homunity", url: "https://youtu.be/_Lej58E-tAc", youtubeId: "_Lej58E-tAc" },
@@ -66,7 +66,7 @@ export const PROJECTS: Project[] = [
     category: "mode",
     categoryLabel: "Mode & Fashion",
     thumbnail: "https://img.youtube.com/vi/4JUVipIfxyc/maxresdefault.jpg",
-    summary: "Campagne vidéo multi-collections : dynamisme urbain, textures textiles et direction photo léchée pour le leader européen du textile.",
+    summary: "Campagne vidéo multi-collections : dynamisme urbain et textures textiles pour le leader européen du textile.",
     deliverables: ["Vidéo lookbook 16:9 et 9:16", "Formats Teaser TikTok/Instagram"],
     videos: [
       { title: "Printemps / Été", url: "https://youtu.be/4JUVipIfxyc", youtubeId: "4JUVipIfxyc" },
@@ -83,7 +83,7 @@ export const PROJECTS: Project[] = [
     category: "mode",
     categoryLabel: "Mode & Fashion",
     thumbnail: "https://img.youtube.com/vi/_mUv5jfDot0/hqdefault.jpg",
-    summary: "Immersion backstage au cœur de la création de la nouvelle collection de la marque streetwear émergente.",
+    summary: "Immersion backstage : au cœur du shooting photo de la nouvelle collection Dimepiece.",
     deliverables: ["BTS Vidéo formats 16:9 & 9:16", "Sound design immersif", "Rythme clip urbain"],
     videos: [
       { title: "Behind The Scenes", url: "https://youtu.be/_mUv5jfDot0", youtubeId: "_mUv5jfDot0" },

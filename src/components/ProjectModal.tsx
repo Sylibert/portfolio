@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Project, VideoItem } from '../data/portfolioData';
 
 interface ProjectModalProps {
@@ -8,6 +8,10 @@ interface ProjectModalProps {
 
 export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+
+  useEffect(() => {
+    setActiveVideoIndex(0);
+  }, [project?.id]);
 
   if (!project) return null;
 
@@ -27,14 +31,14 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         <div className="specular-glint opacity-80" />
 
         {/* Header Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#F3ECE7]/15 bg-[#130602]/80 backdrop-blur-xl">
-          <div className="flex items-center gap-3">
-            <span className="font-display font-bold text-xs uppercase tracking-widest text-[#F3ECE7]/80">
+        <div className="flex items-center justify-between gap-2 px-4 sm:px-6 py-3.5 sm:py-4 border-b border-[#F3ECE7]/15 bg-[#130602]/80 backdrop-blur-xl">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            <span className="font-display font-bold text-[11px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-[#F3ECE7]/80 truncate">
               {project.client}
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F3ECE7]/40" />
-            <div className="h-6 px-3.5 inline-flex items-center justify-center rounded-full liquid-glass-pill">
-              <span className="text-[10px] uppercase font-bold tracking-widest text-[#F3ECE7] translate-y-[2px] leading-none inline-block">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#F3ECE7]/40 shrink-0" />
+            <div className="h-6 px-2.5 sm:px-3.5 inline-flex items-center justify-center rounded-full liquid-glass-pill shrink-0">
+              <span className="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-[#F3ECE7] translate-y-[2px] leading-none inline-block">
                 {project.categoryLabel}
               </span>
             </div>
@@ -42,7 +46,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
           <button
             onClick={onClose}
-            className="w-9 h-9 rounded-full liquid-glass-pill flex items-center justify-center text-[#F3ECE7] hover:bg-white hover:text-[#130602] transition-all cursor-pointer shadow-lg"
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full liquid-glass-pill flex items-center justify-center text-[#F3ECE7] hover:bg-white hover:text-[#130602] transition-all cursor-pointer shadow-lg shrink-0"
             aria-label="Fermer le lecteur"
           >
             <i className="fa-solid fa-xmark text-sm"></i>
@@ -50,18 +54,18 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         </div>
 
         {/* Modal Scrollable Content */}
-        <div className="overflow-y-auto p-5 sm:p-8 space-y-6">
+        <div className="overflow-y-auto p-4 sm:p-8 space-y-5 sm:space-y-6">
           <div>
-            <h2 className="font-display text-xl sm:text-3xl font-extrabold text-[#F3ECE7] tracking-tight leading-snug">
+            <h2 className="font-display text-lg sm:text-3xl font-extrabold text-[#F3ECE7] tracking-tight leading-snug">
               {project.title}
             </h2>
-            <p className="text-sm text-[#F3ECE7]/75 mt-2 font-medium">
+            <p className="text-xs sm:text-sm text-[#F3ECE7]/75 mt-2 font-medium leading-relaxed">
               {project.summary}
             </p>
           </div>
 
           {/* Embedded YouTube Player with Liquid Glass Framing */}
-          <div className="relative aspect-video rounded-3xl overflow-hidden liquid-glass-card shadow-2xl bg-black">
+          <div className="relative aspect-video rounded-2xl sm:rounded-3xl overflow-hidden liquid-glass-card shadow-2xl bg-black">
             <div className="specular-glint opacity-50" />
             {ytId ? (
               <iframe

@@ -42,38 +42,38 @@ Cordialement,`;
   };
 
   return (
-    <section className="py-24 px-4" id="contact">
+    <section className="py-16 sm:py-24 px-4" id="contact">
       <div
-        className="max-w-3xl mx-auto liquid-glass-card glowing-contact-box p-8 sm:p-12 rounded-[2.5rem] relative overflow-hidden text-center shadow-2xl"
+        className="max-w-3xl mx-auto liquid-glass-card glowing-contact-box p-5 sm:p-12 rounded-3xl sm:rounded-[2.5rem] relative overflow-hidden text-center shadow-2xl"
         style={{ borderColor: '#6f3f1d' }}
       >
         <div className="relative z-10 flex flex-col items-center">
-          <span className="text-xs uppercase tracking-widest text-[#F3ECE7]/60 font-bold mb-2">
+          <span className="text-[11px] sm:text-xs uppercase tracking-widest text-[#F3ECE7]/60 font-bold mb-2">
             Disponibilité Immédiate
           </span>
-          <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-[#F3ECE7] mb-3 tracking-wider lowercase">
+          <h2 className="font-display text-2xl sm:text-5xl font-extrabold text-[#F3ECE7] mb-3 tracking-wider lowercase leading-tight">
             on travaille ensemble ?
           </h2>
-          <p className="text-[#F3ECE7]/80 text-sm sm:text-base font-medium mb-8 max-w-xl">
+          <p className="text-[#F3ECE7]/80 text-xs sm:text-base font-medium mb-6 sm:mb-8 max-w-xl px-1 leading-relaxed">
             Discutons de votre projet, de vos objectifs et créons une vidéo sur-mesure.
           </p>
 
           {/* Large Direct Contact Links */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full mb-6 sm:mb-8">
             {/* Email Contact Pill */}
-            <div className="h-11 px-5 inline-flex items-center gap-2 liquid-glass-pill rounded-full shadow-lg">
+            <div className="w-full sm:w-auto h-11 px-4 sm:px-5 inline-flex items-center justify-between sm:justify-start gap-2 liquid-glass-pill rounded-full shadow-lg">
               <a
                 href={`mailto:${emailAddress}`}
-                className="inline-flex items-center gap-2.5 text-[#F3ECE7] hover:text-white font-display font-bold text-xs tracking-wider transition-colors leading-none"
+                className="inline-flex items-center gap-2 sm:gap-2.5 text-[#F3ECE7] hover:text-white font-display font-bold text-[10px] sm:text-xs tracking-normal sm:tracking-wider transition-colors leading-none min-w-0"
               >
                 <span className="w-4 h-4 inline-flex items-center justify-center shrink-0">
                   <i className="fa-regular fa-envelope text-xs text-[#F3ECE7]/75 leading-none"></i>
                 </span>
-                <span className="leading-none -translate-y-[1.5px]">{emailAddress}</span>
+                <span className="leading-none -translate-y-[1.5px] truncate">{emailAddress}</span>
               </a>
               <button
                 onClick={handleCopyEmail}
-                className="ml-1 w-7 h-7 rounded-full bg-[#F3ECE7]/10 hover:bg-[#F3ECE7]/25 text-[#F3ECE7] flex items-center justify-center text-[10px] transition-all cursor-pointer"
+                className="ml-1 w-7 h-7 rounded-full bg-[#F3ECE7]/10 hover:bg-[#F3ECE7]/25 text-[#F3ECE7] flex items-center justify-center text-[10px] transition-all cursor-pointer shrink-0"
                 title="Copier l'e-mail"
                 aria-label="Copier l'e-mail"
               >
@@ -82,10 +82,10 @@ Cordialement,`;
             </div>
 
             {/* Phone Contact Pill */}
-            <div className="h-11 px-5 inline-flex items-center gap-2 liquid-glass-pill rounded-full shadow-lg">
+            <div className="w-full sm:w-auto h-11 px-4 sm:px-5 inline-flex items-center justify-between sm:justify-start gap-2 liquid-glass-pill rounded-full shadow-lg">
               <a
                 href="tel:0644387178"
-                className="inline-flex items-center gap-2.5 text-[#F3ECE7] hover:text-white font-display font-bold text-xs tracking-wider transition-colors leading-none"
+                className="inline-flex items-center gap-2 sm:gap-2.5 text-[#F3ECE7] hover:text-white font-display font-bold text-xs tracking-wider transition-colors leading-none"
               >
                 <span className="w-4 h-4 inline-flex items-center justify-center shrink-0">
                   <i className="fa-solid fa-phone text-xs text-[#F3ECE7]/75 leading-none"></i>
@@ -94,7 +94,7 @@ Cordialement,`;
               </a>
               <button
                 onClick={handleCopyPhone}
-                className="ml-1 w-7 h-7 rounded-full bg-[#F3ECE7]/10 hover:bg-[#F3ECE7]/25 text-[#F3ECE7] flex items-center justify-center text-[10px] transition-all cursor-pointer"
+                className="ml-1 w-7 h-7 rounded-full bg-[#F3ECE7]/10 hover:bg-[#F3ECE7]/25 text-[#F3ECE7] flex items-center justify-center text-[10px] transition-all cursor-pointer shrink-0"
                 title="Copier le numéro"
                 aria-label="Copier le numéro"
               >
@@ -104,10 +104,10 @@ Cordialement,`;
           </div>
 
           {/* Encadré d'information pour le mail (Nom société, Brief, Budget) */}
-          <div className="w-full max-w-xl rounded-3xl p-6 sm:p-7 text-left liquid-glass border border-[#F3ECE7]/15 bg-[#130602]/70 shadow-xl space-y-4">
+          <div className="w-full max-w-xl rounded-2xl sm:rounded-3xl p-4 sm:p-7 text-left liquid-glass border border-[#F3ECE7]/15 bg-[#130602]/70 shadow-xl space-y-4">
             <div className="flex items-center gap-2.5 pb-3 border-b border-[#F3ECE7]/10">
-              <i className="fa-regular fa-clipboard text-[#F3ECE7]/80 text-sm"></i>
-              <h3 className="font-display font-bold text-xs sm:text-sm text-[#F3ECE7] tracking-wide">
+              <i className="fa-regular fa-clipboard text-[#F3ECE7]/80 text-sm shrink-0"></i>
+              <h3 className="font-display font-bold text-[11px] sm:text-sm text-[#F3ECE7] tracking-wide leading-snug">
                 Infos utiles à préciser dans votre e-mail :
               </h3>
             </div>
