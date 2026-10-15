@@ -12,17 +12,26 @@ import { ProjectModal } from './components/ProjectModal';
 export default function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  // Parallax effect for ambient orbs
+  // Parallax effect for ambient orbs on desktop only
   useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY;
-      const orb1 = document.getElementById('orb1');
-      const orb2 = document.getElementById('orb2');
-      const orb3 = document.getElementById('orb3');
+    if (typeof window === 'undefined' || window.innerWidth < 640) return;
 
-      if (orb1) orb1.style.transform = `translateY(${scrolled * 0.25}px)`;
-      if (orb2) orb2.style.transform = `translateY(${scrolled * -0.15}px)`;
-      if (orb3) orb3.style.transform = `translateY(${scrolled * 0.3}px)`;
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.scrollY;
+          const orb1 = document.getElementById('orb1');
+          const orb2 = document.getElementById('orb2');
+          const orb3 = document.getElementById('orb3');
+
+          if (orb1) orb1.style.transform = `translateY(${scrolled * 0.25}px)`;
+          if (orb2) orb2.style.transform = `translateY(${scrolled * -0.15}px)`;
+          if (orb3) orb3.style.transform = `translateY(${scrolled * 0.3}px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -38,19 +47,22 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#130602] text-[#F3ECE7] relative selection:bg-[#F3ECE7] selection:text-[#130602] overflow-x-hidden">
-      {/* Background Liquid Ambient Orbs */}
+      {/* Background Ambient Aura on Mobile (Zero GPU Blur Cost) */}
+      <div className="sm:hidden fixed inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-10%,rgba(243,236,231,0.04),transparent)] pointer-events-none -z-10" />
+
+      {/* Background Liquid Ambient Orbs (Desktop & Tablet) */}
       <div
         id="orb1"
-        className="fixed top-[10%] left-[0%] w-[750px] h-[750px] bg-[#F3ECE7]/5 blur-[150px] rounded-full pointer-events-none -z-10 liquid-orb"
+        className="hidden sm:block fixed top-[10%] left-[0%] w-[750px] h-[750px] bg-[#F3ECE7]/5 blur-[150px] rounded-full pointer-events-none -z-10 liquid-orb"
       />
       <div
         id="orb2"
-        className="fixed top-[45%] right-[-5%] w-[850px] h-[850px] bg-[#F3ECE7]/5 blur-[160px] rounded-full pointer-events-none -z-10 liquid-orb"
+        className="hidden sm:block fixed top-[45%] right-[-5%] w-[850px] h-[850px] bg-[#F3ECE7]/5 blur-[160px] rounded-full pointer-events-none -z-10 liquid-orb"
         style={{ animationDelay: '-3s' }}
       />
       <div
         id="orb3"
-        className="fixed bottom-[-5%] left-[15%] w-[900px] h-[900px] bg-[#F3ECE7]/8 blur-[170px] rounded-full pointer-events-none -z-10 liquid-orb"
+        className="hidden sm:block fixed bottom-[-5%] left-[15%] w-[900px] h-[900px] bg-[#F3ECE7]/8 blur-[170px] rounded-full pointer-events-none -z-10 liquid-orb"
         style={{ animationDelay: '-7s' }}
       />
 

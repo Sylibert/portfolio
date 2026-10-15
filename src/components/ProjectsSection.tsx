@@ -102,7 +102,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
               <img
                 src={project.thumbnail}
                 alt={project.title}
-                loading="lazy"
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                {...(index === 0 ? { fetchPriority: 'high' } : {})}
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   const ytId = project.videos[0]?.youtubeId;
